@@ -1,3 +1,4 @@
+import { getContrastRatio } from "./colorContrast"
 
 interface badgeParams {
     title: string,
@@ -21,41 +22,40 @@ function makeBadge(query: badgeParams): string {
     let label = badge.label
     let info = badge.info
     // in case no was not provided then default
-    let label_clr = query.label_clr == undefined || query.label_clr.split(" ").join('') == "" ? 'silver' : query.label_clr
-    let info_clr = query.info_clr == undefined || query.info_clr.split(" ").join('') == "" ? 'green' : query.info_clr
-    let des = query.des == undefined || query.des.split(" ").join('') == "" ? 'flat' : query.des
+    let labelColor = query.main == undefined || query.main.split(" ").join('') == "" ? '#5c5c5c' : query.main
+    let infoColor = query.secondary == undefined || query.secondary.split(" ").join('') == "" ? '#4EC920' : query.secondary
+    let style = query.style == undefined || query.style.split(" ").join('') == "" ? 'round' : query.style
 
-    // let test_svg = (`
-    // <svg width="150" height="25" viewBox="0 0 150 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-    // <path d="M0 5C0 2.23858 2.23858 0 5 0H${label.length*7+20}V25H5C2.23858 25 0 22.7614 0 20V5Z" fill="#D9D9D9"/>
-    // <text x="10" y="16" fill="black" font-family="monospace">${label}</text>
-    // <path d="M${label.length*7+20} 0H145C147.761 0 150 2.23858 150 5V20C150 22.7614 147.761 25 145 25H${label.length*7+20}V0Z" fill="#D9D9D9"/>
-    // <line x1="${label.length*7+20}" y1="-2.18557e-08" x2="${label.length*7+20}" y2="25" stroke="gray"/>
-    // <text x="${label.length*7+30}" y="16" fill="black" font-family="monospace">${info}</text>
-    // </svg>`)
+    // gotta pass it in 0x000000 format
+    let textColor1 = getContrastRatio(Number.parseInt('0x'+labelColor.split('#')[0])) ? 'white' : '#252525'
+    let textColor2 = getContrastRatio(Number.parseInt('0x'+infoColor.split('#')[0])) ? 'white' : '#252525'
+    // let textColor2='white'
 
-    let test_svg = (
-        `<svg width="${label.length * 7 + 20 + info.length * 7 + 20}" height="25" viewBox="0 0 ${label.length * 7 + 20 + info.length * 7 + 20} 25" rx="5" xmlns="http://www.w3.org/2000/svg">
-            <path d="M0 5C0 2.23858 2.23858 0 5 0H${label.length*7+20}V25H5C2.23858 25 0 22.7614 0 20V5Z" fill="${label_clr}"/>
-            <text x="10" y="16" fill="black" font-family="monospace">${label}</text>
-            <path d="M${label.length*7+20} 0H${info.length * 7 + 40-5}C${info.length * 7 + 40-3}.761 0 ${info.length * 7 + 40} 2.23858 ${info.length * 7 + 40} 5V20C${info.length * 7 + 40} 22.7614 ${info.length * 7 + 40-3}.761 25 ${info.length * 7 + 40-5} 25H${label.length*7+20}V0Z" fill="red"/>
-            <line x1="${label.length * 7 + 20}" y1="-2.18557e-08" x2="${label.length * 7 + 20}" y2="25" stroke="gray"/>
-            <text x="${label.length * 7 + 20 + 7}" y="16" fill="black" font-family="monospace">${info}</text>
+    let padding = 20
+    let label_text_size = label.length * 7 // 7 pixels per char
+    let info_text_size = info.length * 7 // 7 pixels per char
+    // rectWidth = 10px+textSize+10px
+    let labelSize = label_text_size+padding
+    let infoSize = info_text_size+padding
+    let roundSvg = (
+        `<svg width="${label_text_size + padding  + info_text_size + padding}" height="25" viewBox="0 0 ${((label.length * 7 )+ padding ) + ((info.length * 7) + padding)} 25" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 5C0 2.23858 2.23858 0 5 0H${labelSize}V25H5C2.23858 25 0 22.7614 0 20V5Z" fill="${labelColor}"/>
+            <text x="10" y="16" fill="${textColor1}" font-family="monospace">${label}</text>
+            <path d="M${labelSize} 0H${labelSize+infoSize-5}C${labelSize+infoSize-3}.761 0 ${labelSize+infoSize} 2.23858 ${labelSize+infoSize} 5V20C${labelSize+infoSize} 22.7614 ${labelSize+infoSize-3}.761 25 ${labelSize+infoSize-5} 25H${labelSize}V0Z" fill="${infoColor}"/>
+            <text x="${labelSize+10}" y="16" fill="${textColor2}" font-family="monospace">${info}</text>
         </svg>`
     )
-
-    // let test_svg = (
-    //     `<svg width="${label.length * 7 + 20 + info.length * 7 + 20}" height="25" viewBox="0 0 ${label.length * 7 + 20 + info.length * 7 + 20} 25" rx="5" xmlns="http://www.w3.org/2000/svg">
-    //         <rect width="${label.length * 7 + 20}" height="25" fill="${label_clr}"/>
-    //         <path d="M0 5C0 2.23858 2.23858 0 5 0H${label.length*7+20}V25H5C2.23858 25 0 22.7614 0 20V5Z" fill="red"/>
-    //         <text x="10" y="16" fill="black" font-family="monospace">${label}</text>
-    //         <rect x="${label.length * 7 + 20}" width="${info.length * 7 + 20}" height="25" fill="${info_clr}"/>
-    //         <line x1="${label.length * 7 + 20}" y1="-2.18557e-08" x2="${label.length * 7 + 20}" y2="25" stroke="gray"/>
-    //         <text x="${label.length * 7 + 20 + 10}" y="16" fill="black" font-family="monospace">${info}</text>
-    //     </svg>`
-    // )
-    return test_svg
-    // return `<svg width="105" height="22" viewBox="0 0 105 22" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="150" height="25" fill="red"/></svg>`
+    let flatSvg = (
+        `<svg width="${label_text_size + padding  + info_text_size + padding}" height="25" viewBox="0 0 ${((label.length * 7 )+ padding ) + ((info.length * 7) + padding)} 25" xmlns="http://www.w3.org/2000/svg">
+            <rect x="0" y="0" width="${labelSize}" height="25" fill="${labelColor}"/>
+            <text x="10" y="16" fill="${textColor1}" font-family="monospace">${label}</text>
+            <rect x="${labelSize}" y="0" width="${infoSize}" height="25" fill="${infoColor}"/>
+            <text x="${labelSize+10}" y="16" fill="${textColor2}" font-family="monospace">${info}</text>
+        </svg>`
+    )
+    return style==='flat' ? flatSvg : roundSvg
 }
+
+// 2.30 contrast
 
 export { makeBadge }
