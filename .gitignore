@@ -1,3 +1,7 @@
+# my ignores
+test.html
+src/assets
+
 # Logs
 logs
 *.log
