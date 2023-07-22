@@ -1,7 +1,7 @@
 # Readme-api
 ### One api for all badges, stats, checks and more
 
-![alt_text](http://localhost:3000/badge?label=Build&info=-version)
+![alt_text](https://readmestats.onrender.com/badge?label=Build&info=-version)
 
 - Content :
   1. [Badges](#badges)
@@ -17,15 +17,15 @@
 <h2 id="badges">Badges :</h2>
 <p>
 
-   ### in order to obtain somthing similar to this :  <img align="center" src='http://localhost:3000/badge?label=Your&info=Badge'>
+   ### in order to obtain somthing similar to this :  <img align="center" src='https://readmestats.onrender.com/badge?label=Your&info=Badge'>
 
    you must follow a certain query.
    the url should at minimum have a ```label``` and ```info``` in the query
 
-   >https://www.github.io/readme-api/```badge?label=Your&info=Text```
+   >https://readmestats.onrender.com/```badge?label=Your&info=Text```
 
    results :
-   <img align="center" src='http://localhost:3000/badge?label=Your&info=Text'>
+   <img align="center" src='https://readmestats.onrender.com/badge?label=Your&info=Text'>
    
    Optional query :
    >Label Background Color ```main=191919``` Hex value withou the # <br>
@@ -33,10 +33,10 @@
    >Style ```style=flat``` to cancel the rounded borders
 
    your query should look similar to this
-   >https://www.github.io/readme-api/```badge?label=Your&info=Text&main=191919&secondary=812CD1&style=flat```
+   >https://readmestats.onrender.com/```badge?label=Your&info=Text&main=191919&secondary=812CD1&style=flat```
 
    results :
-   <img align="center" src='http://localhost:3000/badge?label=Your&info=Text&main=191919&secondary=812CD1&style=flat'>
+   <img align="center" src='https://readmestats.onrender.com/badge?label=Your&info=Text&main=191919&secondary=812CD1&style=flat'>
 </p>
 <h2 id="cards">Cards :</h2>
 <p>
