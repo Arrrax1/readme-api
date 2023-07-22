@@ -2,7 +2,7 @@ import Express from 'express'
 import { makeBadge } from './scripts/badge'
 
 const app = Express()
-const port = 3000
+const port = process.env.PORT || 3000
 
 app.get('/', (req, res) => {
   res.send("not available at the moment")
