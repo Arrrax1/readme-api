@@ -12,7 +12,7 @@ function getRelativeLuminance(color: number):number {
 function getContrastRatio(color2: number):boolean {
     const L1 = getRelativeLuminance(white);
     const L2 = getRelativeLuminance(color2);
-    return ((Math.max(L1, L2) + 0.05) / (Math.min(L1, L2) + 0.05)) > 2.4;
+    return ((Math.max(L1, L2) + 0.05) / (Math.min(L1, L2) + 0.05)) > 1.35;
 }
 
 export {getContrastRatio}
