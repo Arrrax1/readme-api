@@ -1,4 +1,4 @@
-const nodeFetch = require('node-fetch')
+const nodeFetch = require('node-fetch');
 
 export const skillSvg = async (query: { [key: string]: string }): Promise<string> => {
     let name = query.name
