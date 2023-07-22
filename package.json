@@ -6,7 +6,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc --outDir build",
     "dev": "concurrently --kill-others \"tsc --watch\" \"nodemon ./dist/server.js \"",
-    "start": "node build/server.js"
+    "start": "tsc --outDir build\"node build/server.js\""
   },
   "repository": {
     "type": "git",
