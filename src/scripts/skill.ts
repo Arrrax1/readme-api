@@ -1,3 +1,5 @@
+const nodeFetch = require('node-fetch')
+
 export const skillSvg = async (query: { [key: string]: string }): Promise<string> => {
     let name = query.name
     let color = query.color == undefined || query.color.split(" ").join('') == "" ? 'ffffff' : query.color
@@ -8,7 +10,7 @@ export const skillSvg = async (query: { [key: string]: string }): Promise<string
     let width = (padding*3)+textSize+16
     let svg=''
     try {
-        let resp = await fetch(`https://simpleicons.vercel.app/${name}/${color}`)
+        let resp = await nodeFetch(`https://simpleicons.vercel.app/${name}/${color}`)
         let logo = await resp.text()
         name=name.toUpperCase()
         svg = (`
@@ -21,7 +23,7 @@ export const skillSvg = async (query: { [key: string]: string }): Promise<string
         </svg>
         `)
     } catch (error) {
-            svg='error'
+        svg=JSON.stringify(error)
     }
     return svg
     // console.log(svg)
