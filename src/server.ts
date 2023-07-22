@@ -29,19 +29,23 @@ app.get('/badge', (req, res) => {
 })
 
 app.get('/skill', async (req, res) => {
-   // no name or info provided
-   if (req.query.name === undefined) res.send("No Name provided, check your query")
-   else {
-     // name provided was an empty String
-     let name = req.query.name.toString().split(" ").join('')
-     if (name.length < 1) res.send('False request, Check your query')
-     // Valid query
-     else {
-      let result = await skillSvg(JSON.parse(JSON.stringify(req.query)))
-      res.setHeader('Content-Type', 'image/svg+xml');
-      res.send(result)
-     }
-   }
+  // no name or info provided
+  if (req.query.name === undefined) res.send("No Name provided, check your query")
+  else {
+    // name provided was an empty String
+    let name = req.query.name.toString().split(" ").join('')
+    if (name.length < 1) res.send('False request, Check your query')
+    // Valid query
+    else {
+      try {
+        let result = await skillSvg(JSON.parse(JSON.stringify(req.query)))
+        res.setHeader('Content-Type', 'image/svg+xml');
+        res.send(result)
+      } catch (error) {
+        res.send(error)
+      }
+    }
+  }
 })
 
 app.listen(port, () => {
