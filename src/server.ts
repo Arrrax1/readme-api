@@ -1,6 +1,7 @@
 import Express from 'express'
 import { makeBadge } from './scripts/badge'
 import { skillSvg } from './scripts/skill'
+import { getCard } from './scripts/card'
 
 const app = Express()
 const port = process.env.PORT || 3000
@@ -39,6 +40,26 @@ app.get('/skill', async (req, res) => {
     else {
       try {
         let result = await skillSvg(JSON.parse(JSON.stringify(req.query)))
+        res.setHeader('Content-Type', 'image/svg+xml');
+        res.send(result)
+      } catch (error) {
+        res.send(error)
+      }
+    }
+  }
+})
+
+app.get('/cards', async (req, res) => {
+  // no User or info provided
+  if (req.query.user === undefined) res.send("No User provided, check your query")
+  else {
+    // User provided was an empty String
+    let user = req.query.user.toString().split(" ").join('')
+    if (user.length < 1) res.send('False request, Check your query')
+    // Valid query
+    else {
+      try {
+        let result = await getCard(JSON.parse(JSON.stringify(req.query)))
         res.setHeader('Content-Type', 'image/svg+xml');
         res.send(result)
       } catch (error) {
