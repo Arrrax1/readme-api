@@ -88,6 +88,12 @@ export const getCard = async (query: { [key: string]: string }): Promise<string>
         }
     }
 
+    let rank:string
+    if (commitsCount>300) rank = 'S'
+    else if (commitsCount>200) rank = 'A'
+    else if (commitsCount>100) rank = 'B'
+    else rank = 'C'
+
     let svg = (`
         <svg width="450" height="230" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 450 230">
             <rect x="1" y="1" stroke="${theme.main}" fill="${theme.background}" width="448" height="228" rx="8" stroke-width="2" />
@@ -110,7 +116,7 @@ export const getCard = async (query: { [key: string]: string }): Promise<string>
             <text x="230" y="175" font-family="monospace" font-size="12" fill="${theme.secondary}">Commits : ${commitsCount}</text>
             <text x="230" y="195" font-family="monospace" font-size="12" fill="${theme.secondary}">Stars : ${stars}</text>
             <text x="250" y="50" font-family="sans-serif" font-size="24" font-weight="bold" fill="${theme.main}">Rank</text>
-            <text x="310" y="75" font-family="sans-serif" font-size="24" font-weight="bold"  fill="white">S-tier</text>
+            <text x="310" y="75" font-family="sans-serif" font-size="24" font-weight="bold"  fill="white">${rank}-tier</text>
         </svg>
     `)
     return svg
