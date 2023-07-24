@@ -6,6 +6,19 @@ interface langStruct {
     percentage:string
 }
 
+interface colorScheme{
+    background:string,
+    main:string,
+    secondary:string
+}
+
+const palette:colorScheme[]=[]
+palette.push({'background':'#0A465F','main':'#FFFF9E','secondary':'#FFFFFF'}) // emerald
+palette.push({'background':'#121b26','main':'#FFFF9E','secondary':'#FFFFFF'}) // gold
+palette.push({'background':'#fcfcfc','main':'#0A465F','secondary':'#0A465F'}) // ocean
+palette.push({'background':'#fcfcfc','main':'#a81a6b','secondary':'#444444'}) // purple
+palette.push({'background':'#121b26','main':'#a81a6b','secondary':'#E5E5E5'}) // complicated
+
 export const getCard = async (query: { [key: string]: string }): Promise<string> => {
     let user = query.user
     let response = await nodeFetch(`https://api.github.com/users/${user}`)
@@ -20,15 +33,16 @@ export const getCard = async (query: { [key: string]: string }): Promise<string>
     response = await nodeFetch(`https://api.github.com/users/${user}/repos`)
     content = await response.text()
     content = JSON.parse(content)
-    console.log(content)
     let commitsCount=0
-    for (const repo of content){
-        let commitsResponse = await nodeFetch(`${repo.commits_url.split('{')[0]}`)
+    for (let index= 0; index < content.length; index++){
+        // console.log(content[index].commits_url.split('{')[0])
+        let commitsResponse = await nodeFetch(`${content[index].commits_url.split('{')[0]}`)
         let commitsContent = await commitsResponse.text()
-        commitsContent = JSON.parse(commitsContent)
-        commitsCount = commitsCount + commitsContent.length
+        let commitsArray = JSON.parse(commitsContent)
+        commitsCount = commitsCount + commitsArray.length
     }
-    console.log(commitsCount)
+    // for (const repo of content){
+    // }
     
     // [[language, color, percentage]]
     let languages:langStruct[]
@@ -52,6 +66,5 @@ export const getCard = async (query: { [key: string]: string }): Promise<string>
             <text x="310" y="75" font-family="sans-serif" font-size="24" font-weight="bold">S-tier</text>
         </svg>
     `)
-    console.log(svg)
     return svg
 }
