@@ -29,8 +29,8 @@
    
    Optional query :
    > ```style=flat``` Style to cancel the rounded borders <br>
-   > ```main=191919``` Label Background Color (Hex value withou the #) <br>
-   > ```secondary=812CD1``` Info Background Color  (Hex value withou the #)
+   > ```main=191919``` Label Background Color (Hex value withou the # and 6 chars) <br>
+   > ```secondary=812CD1``` Info Background Color  (Hex value withou the # and 6 chars)
 
    your query should look similar to this
    > `https://readmestats.onrender.com/badge?label=Your&info=Text&main=191919&secondary=812CD1&style=flat`
@@ -41,25 +41,25 @@
 <h2 id="skils">Skills :</h2>
 <p>
 
-   ### in order to obtain somthing similar to this :  <img align="center" src='https://readmestats.onrender.com/skill?name=SQL'>
+   ### in order to obtain somthing similar to this :  <img align="center" src='https://readmestats.onrender.com/skill?name=gradle'>
    > this is the base link `https://readmestats.onrender.com/skill?`
    you must follow a certain query.
    the url should at minimum have a ```name``` in the query
 
-   >`https://readmestats.onrender.com/skill?name=SQL`
+   >`https://readmestats.onrender.com/skill?name=gradle`
 
    results :
-   <img align="center" src='https://readmestats.onrender.com/skill?name=SQL'>
+   <img align="center" src='https://readmestats.onrender.com/skill?name=gradle'>
    
    Optional query :
-   > ```color=61DBFB``` Color for the icon  (Hex value withou the #) <br>
-   > ```bg=191919``` Background Color for the whole badge (Hex value withou the #)
+   > ```color=61DBFB``` Color for the icon  (Hex value withou the # and 6 chars) <br>
+   > ```bg=333333``` Background Color for the whole badge (Hex value withou the # and 6 chars)
 
    your query should look similar to this
-   > `https://readmestats.onrender.com/skilll?name=react&color=61DBFB&bg=191919`
+   > `https://readmestats.onrender.com/skill?name=react&color=61DBFB&bg=333333`
 
    results :
-   <img align="center" src='https://readmestats.onrender.com/skill?name=react&color=61DBFB&bg=191919'>
+   <img align="center" src='https://readmestats.onrender.com/skill?name=react&color=61DBFB&bg=333333'>
 </p>
 <h2 id="cards">Cards :</h2>
 <p>
