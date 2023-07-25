@@ -63,7 +63,25 @@
 </p>
 <h2 id="cards">Cards :</h2>
 <p>
-    in order tp obtain somthing similar to this :
+
+   ### in order to obtain somthing similar to this :  <img align="center" src='https://readmestats.onrender.com/card?user=arrrax1'>
+   > this is the base link `https://readmestats.onrender.com/card?`
+   you must follow a certain query.
+   the url should at minimum have a ```user``` in the query
+
+   >`https://readmestats.onrender.com/card?user=arrrax1`
+
+   results :
+   <img align="center" src='https://readmestats.onrender.com/card?user=arrrax1'>
+   
+   Optional query :
+   > ```theme=gold``` theme for the card
+
+   your query should look similar to this
+   > `https://readmestats.onrender.com/card?user=arrrax1&theme=complicated`
+
+   results :
+   <img align="center" src='https://readmestats.onrender.com/card?user=arrrax1&theme=complicated'>
 </p>
 <h2 id="stats">Stats :</h2>
 <p>
