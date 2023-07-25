@@ -49,7 +49,7 @@ app.get('/skill', async (req, res) => {
   }
 })
 
-app.get('/cards', async (req, res) => {
+app.get('/card', async (req, res) => {
   // no User or info provided
   if (req.query.user === undefined) res.send("No User provided, check your query")
   else {
