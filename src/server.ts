@@ -4,10 +4,11 @@ import { skillSvg } from './scripts/skill'
 import { getCard } from './scripts/card'
 
 const app = Express()
+app.use(Express.static(__dirname + '/public'));
 const port = process.env.PORT || 3000
 
 app.get('/', (req, res) => {
-  res.send("not available at the moment")
+  res.sendFile('index.html')
 })
 
 app.get('/badge', (req, res) => {

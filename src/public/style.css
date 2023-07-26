@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Belanosima&family=McLaren&family=Nunito&family=Orbitron&display=swap');
+:root{
+    --bg:#FCFCFC;
+    --main:#663399;
+    --secondary:#eed0fc;
+    --title:#663399;
+}
+@media (prefers-color-scheme: dark) {
+    :root{
+        --bg:#11081F;
+        --main:#FFFFFF;
+        --secondary:#A456F0;
+        --title:#FFFFFF;
+    }
+}
+h1{color:var(--title);text-align: center;margin-bottom: 40px;}
+body{
+    margin: 0;
+    font-family: 'Belanosima', sans-serif;
+    color: var(--secondary);
+    background-color: var(--bg);
+    display: grid;
+    place-content: center;
+    align-content: center;
+    min-height: 90dvh;
+}
+
+.container-dropDown{
+    border: 1px solid var(--secondary);
+    border-radius: 5px;
+    padding: 10px;
+    width: 400px;
+    height: 40px;
+    overflow: hidden;
+    margin: 15px;
+    transition: all 300ms ease-in;
+}
+.title-wrapper{cursor: pointer;}
+.arrow-icon{
+    /*relative position so index would work*/
+    position: relative;
+    z-index: -1;
+    display: inline-block;
+    color: #e5e5e5;
+    font-size: 30px;
+    vertical-align: sub;
+    user-select: none;
+    transition: all 300ms ease-in;
+}
+.query-title{
+    /*relative position so index would work*/
+    position: relative;
+    z-index: -1;
+    display: inline-block;
+    padding-bottom: 5px;
+    margin-bottom: 20px;
+    color: var(--secondary);
+    border-bottom: 1px solid var(--secondary);
+    font-size: 25px;
+    user-select: none;
+}
+.query{
+    color: var(--main);
+    padding: 0 35px;
+}
+.params{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.query-input{
+    padding: 5px;
+    background-color: #fcfcfc;
+    outline: none;
+    border: 1px dashed var(--secondary);
+    border-radius: 4px;
+    margin: 3px 0;
+    color: #663399;
+    font-weight: bold;
+}
+/* .container-dropDown-maximized{
+    height: 300px;
+    max-height: fit-content;
+    transition: all 300ms ease-in;} */
+.container-dropDown-maximized .arrow-icon{transform: rotateZ(90deg);
+    transition: all 300ms ease-in;}

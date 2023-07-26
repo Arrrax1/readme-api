@@ -4,8 +4,10 @@
   "description": "",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsc --outDir build",
-    "dev": "concurrently --kill-others \"tsc --watch\" \"nodemon ./dist/server.js \"",
+    "build": "npm run clean-files && tsc --outDir build && npm run copy-files",
+    "dev": "cp -r ./src/public ./dist && concurrently --kill-others \"tsc --watch\" \"nodemon ./dist/server.js \"",
+    "copy-files": "cp -r ./src/public ./build",
+    "clean-files": "rm -rf ./build",
     "start": "node build/server.js"
   },
   "repository": {
