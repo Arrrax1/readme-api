@@ -84,7 +84,13 @@
    results :
    <img align="center" src='https://readmestats.onrender.com/card?user=arrrax1&theme=complicated'>
 </p>
-<h2 id="stats">Stats :</h2>
+
+<h2 id="stats">Dynamic Badge :</h2>
 <p>
-    in order tp obtain somthing similar to this :
+    to be added
+</p>
+
+<h2 id="intro">Introduction Image :</h2>
+<p>
+    to be added
 </p>
