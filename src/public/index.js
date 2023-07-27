@@ -34,3 +34,13 @@ function updateQuery(targetQueryParent) {
     }
     targetQueryParent.children[2].children[0].value=query.join('')
 }
+
+document.querySelectorAll('.copy-btn').forEach((btn)=>{
+    btn.addEventListener('click',()=>{
+        navigator.clipboard.writeText(btn.parentNode.children[0].value)
+        document.querySelector('.copy-text').style.display='block'
+        setTimeout(() => {
+            document.querySelector('.copy-text').style.display='none'
+        }, 1200);
+    })
+})
