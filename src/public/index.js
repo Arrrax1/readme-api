@@ -14,3 +14,23 @@ document.querySelectorAll('.title-wrapper').forEach((title) => {
         }
     })
 })
+
+document.querySelectorAll('.query-input').forEach((el)=>{
+    el.addEventListener('input',(e)=>{
+        let parent = e.target.parentNode.parentNode.parentNode
+        // let input = e.target
+        // let queryParamName = input.id
+        // let queryParamValue = input.value
+        updateQuery(parent)
+    })
+})
+
+function updateQuery(targetQueryParent) {
+    let query=[`https://readmestats.onrender.com/${targetQueryParent.id}?`]
+    for(const node of targetQueryParent.children[1].children){
+        if(node.classList.contains('params')){
+           if(node.children[1].value.split(" ").join('') != '') query.push(`&${node.children[1].id}=${node.children[1].value}`)
+        }
+    }
+    targetQueryParent.children[2].children[0].value=query.join('')
+}

@@ -10,42 +10,81 @@
 
 <body>
     <h1>Readme Api Query Maker</h1>
-    <section class="container-dropDown">
+    <section class="container-dropDown" id="badge">
         <div class="title-wrapper">
             <span class="arrow-icon">▸</span>
             <div class="query-title">Badge query</div>
         </div>
-            <div class="query">
-            <span class="params"></span><input type="text" name="" id="">
+        <div class="query">
+            <div class="params">
+                <label for="label"><strong style="color: red;">*</strong>Label Text : </label><input placeholder="build" autocomplete="off" spellcheck="false"
+                    class="query-input" type="text" name="" id="label">
+            </div>
+            <div class="params">
+                <label for="info"><strong style="color: red;">*</strong>Info text : </label><input placeholder="stable" autocomplete="off" spellcheck="false" class="query-input"
+                    type="text" name="" id="info">
+            </div>
+            <div class="params">
+                <label for="main">Label Background : </label><input placeholder="191919" autocomplete="off" spellcheck="false"
+                    class="query-input" type="text" name="" id="main">
+            </div>
+            <div class="params">
+                <label for="secondary">Info Background : </label><input placeholder="812CD1" autocomplete="off" spellcheck="false"
+                    class="query-input" type="text" name="" id="secondary">
+            </div>
+            <div class="params">
+                <label for="style">Style : </label><input placeholder="flat" autocomplete="off" spellcheck="false"
+                    class="query-input" type="text" name="" id="style">
+            </div>
+        </div>
+        <div class="output">
+            <input class="query-input output" readonly type="text"><img class="copy-btn" src="copy.png" alt="">
         </div>
     </section>
-    <section class="container-dropDown">
+    <section class="container-dropDown" id="skill">
         <div class="title-wrapper">
             <span class="arrow-icon">▸</span>
             <div class="query-title">Skill query</div>
         </div>
         <div class="query">
             <div class="params">
-                <label for="name">Skill Icon Name : </label><input autocomplete="off" spellcheck="false" class="query-input" type="text" name="" id="name">
+                <label for="name"><strong style="color: red;">*</strong>Skill Name : </label><input placeholder="html5" autocomplete="off" spellcheck="false"
+                    class="query-input" type="text" name="" id="name">
             </div>
             <div class="params">
-                <label for="color">Logo Color : </label><input autocomplete="off" spellcheck="false" class="query-input" type="text" name="" id="color">
+                <label for="color">Logo Color : </label><input placeholder="000000" autocomplete="off" spellcheck="false" class="query-input"
+                    type="text" name="" id="color">
             </div>
             <div class="params">
-                <label for="bg">Label Background : </label><input autocomplete="off" spellcheck="false" class="query-input" type="text" name="" id="bg">
+                <label for="bg">Label Background : </label><input placeholder="FF6700" autocomplete="off" spellcheck="false"
+                    class="query-input" type="text" name="" id="bg">
             </div>
-            <div style="padding: 5px;background-color: #dadada55;border-radius:4px;width:fit-content;margin:10px auto 0 auto">
+            <div
+                style="padding: 5px;background-color: #dadada55;border-radius:4px;width:fit-content;margin:10px auto 0 auto">
                 <code>where to get icon names ? here : <br><a target="_blank" href="https://simpleicons.vercel.app/">https://simpleicons.vercel.app/</a></code>
             </div>
         </div>
+        <div class="output">
+            <input class="query-input output" readonly type="text"><img class="copy-btn" src="copy.png" alt="">
+        </div>
     </section>
-    <section class="container-dropDown">
+    <section class="container-dropDown" id="card">
         <div class="title-wrapper">
             <span class="arrow-icon">▸</span>
             <div class="query-title">Card query</div>
         </div>
         <div class="query">
-            <span class="params"></span><input type="text" name="" id="">
+            <div class="params">
+                <label for="user"><strong style="color: red;">*</strong>User Name : </label><input autocomplete="off" spellcheck="false"
+                    class="query-input" type="text" name="" id="user" placeholder="arrrax1">
+            </div>
+            <div class="params">
+                <label for="theme" title="emerald, gold, ocean, purple, complicated">Theme Style : </label><input autocomplete="off" spellcheck="false" class="query-input"
+                    type="text" name="" id="theme" placeholder="hover label for themes">
+            </div>
+        </div>
+        <div class="output">
+            <input class="query-input output" readonly type="text"><img class="copy-btn" src="copy.png" alt="">
         </div>
     </section>
     <script src="index.js"></script>
