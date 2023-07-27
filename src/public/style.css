@@ -100,3 +100,12 @@ body{
     }
 }
 .container-dropDown-maximized .arrow-icon{transform: rotateZ(90deg);transition: all 300ms linear;}
+
+.warning{
+    animation: warn 1200ms linear infinite;
+}
+@keyframes warn {
+    50%{
+        background-color: pink;
+    }
+}

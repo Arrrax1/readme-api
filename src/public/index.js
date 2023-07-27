@@ -30,6 +30,10 @@ function updateQuery(targetQueryParent) {
     for(const node of targetQueryParent.children[1].children){
         if(node.classList.contains('params')){
            if(node.children[1].value.split(" ").join('') != '') query.push(`&${node.children[1].id}=${node.children[1].value}`)
+           if(node.children[1].classList.contains('color')) {
+            !validColor(node.children[1].value) ? node.children[1].classList.add('warning') : node.children[1].classList.remove('warning')
+           }
+           if(node.children[1].value.split(" ").join('') != '') query.push(`&${node.children[1].id}=${node.children[1].value}`)
         }
     }
     targetQueryParent.children[2].children[0].value=query.join('')
@@ -46,5 +50,6 @@ document.querySelectorAll('.copy-btn').forEach((btn)=>{
 })
 
 function validColor(color) {
-    return /([A-F]|[a-f]|[0-9]){6}/.test(color) && color.length==6
+    if (color.length == 0) return true
+    return /([A-F]|[a-f]|[0-9]){6}/.test(color) && color.length== 6
 }
