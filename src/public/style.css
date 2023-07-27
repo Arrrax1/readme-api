@@ -6,7 +6,7 @@
     /* --secondary:#eed0fc; */
     --title:#663399;
 }
-@media (prefers-color-scheme: light) {
+@media (prefers-color-scheme: dark) {
     :root{
         --bg:#11081F;
         --main:#FFFFFF;

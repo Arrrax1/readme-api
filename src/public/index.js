@@ -44,3 +44,7 @@ document.querySelectorAll('.copy-btn').forEach((btn)=>{
         }, 1200);
     })
 })
+
+function validColor(color) {
+    return /([A-F]|[a-f]|[0-9]){6}/.test(color) && color.length==6
+}
