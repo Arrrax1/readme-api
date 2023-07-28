@@ -1,3 +1,9 @@
+Notes: 
+1-Due to GitHub's policy the user profile image in the card won't display on github readme
+2-I made this simple lame api cause I was bored
+3- https://readmestats.onrender.com/ click here to go to a demo
+4- probably won't add dynamic badges sry :P
+
 # Readme-api
 ### One api for all badges, stats, checks and more
 
@@ -82,7 +88,7 @@
    > `https://readmestats.onrender.com/card?user=arrrax1&theme=complicated`
 
    results :
-   <img align="center" src='https://readmestats.onrender.com/card?user=arrrax1&theme=complicated'>
+   <img align="center" src='https://readmestats.onrender.com/card?user=HaidarEzio&theme=complicated'>
 </p>
 
 <h2 id="stats">Dynamic Badge :</h2>
