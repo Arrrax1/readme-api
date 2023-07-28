@@ -1,5 +1,5 @@
 const nodeFetch = require('node-fetch')
-import { TOKEN } from "./myenv"
+
 interface langStruct {
     language: string,
     count: number,
@@ -21,16 +21,16 @@ palette.push({ 'background': '#121b26', 'main': '#a81a6b', 'secondary': '#E5E5E5
 
 export const getCard = async (query: { [key: string]: string }): Promise<string> => {
     let user = query.user
-    let response = await nodeFetch(`https://api.github.com/users/${user}`,{method :"GET",headers:{Authorization:`Bearer ${TOKEN}`}})
+    let response = await nodeFetch(`https://api.github.com/users/${user}`,{method :"GET",headers:{Authorization:`Bearer ${process.env.TOKEN}`}})
     let content = await response.text()
     content = JSON.parse(content)
     let userImg = content.avatar_url
     let reposCount = content.public_repos
-    response = await nodeFetch(`https://api.github.com/users/${user}/starred`,{method :"GET",headers:{Authorization:`Bearer ${TOKEN}`}})
+    response = await nodeFetch(`https://api.github.com/users/${user}/starred`,{method :"GET",headers:{Authorization:`Bearer ${process.env.TOKEN}`}})
     content = await response.text()
     content = JSON.parse(content)
     let stars = content.length
-    response = await nodeFetch(`https://api.github.com/search/commits?q=author:${user}`,{method :"GET",headers:{Authorization:`Bearer ${TOKEN}`}})
+    response = await nodeFetch(`https://api.github.com/search/commits?q=author:${user}`,{method :"GET",headers:{Authorization:`Bearer ${process.env.TOKEN}`}})
     content = await response.text()
     content = JSON.parse(content)
     let commitsCount = content.total_count
@@ -69,7 +69,7 @@ export const getCard = async (query: { [key: string]: string }): Promise<string>
     // [[language, color, percentage]]
     let languages: langStruct[] = [{'language':'no Lang','count':0,'percentage':0},{'language':'no Lang','count':0,'percentage':0},{'language':'no Lang','count':0,'percentage':0}];
 
-    response = await nodeFetch(`https://api.github.com/users/${user}/repos`,{method :"GET",headers:{Authorization:`Bearer ${TOKEN}`}})
+    response = await nodeFetch(`https://api.github.com/users/${user}/repos`,{method :"GET",headers:{Authorization:`Bearer ${process.env.TOKEN}`}})
     content = await response.text()
     content = JSON.parse(content)
     for(const repo of content){

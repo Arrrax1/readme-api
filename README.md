@@ -54,7 +54,7 @@
    Optional query :
    > ```color=61DBFB``` Color for the icon  (Hex value withou the # and 6 chars) <br>
    > ```bg=333333``` Background Color for the whole badge (Hex value withou the # and 6 chars)
-## Where to get icon name ? here ```https://simpleicons.vercel.app```
+###### Where to get icon name ? here ```https://simpleicons.vercel.app```
     
    your query should look similar to this
    > `https://readmestats.onrender.com/skill?name=react&color=61DBFB&bg=333333`

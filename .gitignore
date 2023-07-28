@@ -2,6 +2,7 @@
 build
 test.html
 src/assets
+myenv.ts
 
 # Logs
 logs
