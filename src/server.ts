@@ -2,6 +2,7 @@ import Express from 'express'
 import { makeBadge } from './scripts/badge'
 import { skillSvg } from './scripts/skill'
 import { getCard } from './scripts/card'
+import { bio } from './scripts/bio'
 
 const app = Express()
 app.use(Express.static(__dirname + '/public'));
@@ -66,6 +67,25 @@ app.get('/card', async (req, res) => {
       } catch (error) {
         res.send(error)
       }
+    }
+  }
+})
+
+app.get('/bio', (req, res) => {
+  // no name or prefessions provided
+  if (req.query.name === undefined) res.send("No Name provided, check your query")
+  else if (req.query.skills === undefined) res.send("No Skills provided, check your query")
+  else {
+    // name or prefessions provided were an empty String
+    let name = req.query.name.toString().split(" ").join('')
+    let skills = req.query.skills.toString().split(" ").join('')
+    if (name.length < 1) res.send('False request, Check your query')
+    else if (skills.length < 1) res.send('False request, Check your query')
+    // Valid query
+    else {
+      let biography = bio(JSON.parse(JSON.stringify(req.query)))
+      res.setHeader('Content-Type', 'image/svg+xml');
+      res.send(biography)
     }
   }
 })
