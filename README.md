@@ -88,7 +88,7 @@ Notes:
    > `https://readmestats.onrender.com/card?user=arrrax1&theme=complicated`
 
    results :
-   <img align="center" src='https://readmestats.onrender.com/card?user=arrrax1&theme=complicated'>
+   <img align="center" src='https://readmestats.onrender.com/card?user=HaidarEzio&theme=complicated'>
 </p>
 
 <h2 id="stats">Dynamic Badge :</h2>
