@@ -1,5 +1,5 @@
 const nodeFetch = require('node-fetch')
-
+import { TOKEN } from "./myenv"
 interface langStruct {
     language: string,
     count: number,
@@ -21,22 +21,23 @@ palette.push({ 'background': '#121b26', 'main': '#a81a6b', 'secondary': '#E5E5E5
 
 export const getCard = async (query: { [key: string]: string }): Promise<string> => {
     let user = query.user
-    let response = await nodeFetch(`https://api.github.com/users/${user}`)
+    let response = await nodeFetch(`https://api.github.com/users/${user}`,{method :"GET",headers:{Authorization:`Bearer ${TOKEN}`}})
     let content = await response.text()
     content = JSON.parse(content)
     let userImg = content.avatar_url
     let reposCount = content.public_repos
-    response = await nodeFetch(`https://api.github.com/users/${user}/starred`)
+    response = await nodeFetch(`https://api.github.com/users/${user}/starred`,{method :"GET",headers:{Authorization:`Bearer ${TOKEN}`}})
     content = await response.text()
     content = JSON.parse(content)
     let stars = content.length
-    response = await nodeFetch(`https://api.github.com/search/commits?q=author:${user}`)
+    response = await nodeFetch(`https://api.github.com/search/commits?q=author:${user}`,{method :"GET",headers:{Authorization:`Bearer ${TOKEN}`}})
     content = await response.text()
     content = JSON.parse(content)
     let commitsCount = content.total_count
 
     let theme: colorScheme
     let themeColors = query.theme == undefined ? 'emerald' : query.theme
+    let rankColor = 'white'
     switch (themeColors) {
         case 'emerald':
             theme=palette[0]
@@ -48,10 +49,12 @@ export const getCard = async (query: { [key: string]: string }): Promise<string>
 
         case 'ocean':
             theme=palette[2]
+            rankColor = '#555'
             break;
 
         case 'purple':
             theme=palette[3]
+            rankColor = '#555'
             break;
 
         case 'complicated':
@@ -64,9 +67,9 @@ export const getCard = async (query: { [key: string]: string }): Promise<string>
     }
 
     // [[language, color, percentage]]
-    let languages: langStruct[] = [{'language':'no Lnag','count':0,'percentage':0},{'language':'no Lnag','count':0,'percentage':0},{'language':'no Lnag','count':0,'percentage':0}];
+    let languages: langStruct[] = [{'language':'no Lang','count':0,'percentage':0},{'language':'no Lang','count':0,'percentage':0},{'language':'no Lang','count':0,'percentage':0}];
 
-    response = await nodeFetch(`https://api.github.com/users/${user}/repos`)
+    response = await nodeFetch(`https://api.github.com/users/${user}/repos`,{method :"GET",headers:{Authorization:`Bearer ${TOKEN}`}})
     content = await response.text()
     content = JSON.parse(content)
     for(const repo of content){
@@ -116,7 +119,7 @@ export const getCard = async (query: { [key: string]: string }): Promise<string>
             <text x="230" y="175" font-family="monospace" font-size="12" fill="${theme.secondary}">Commits : ${commitsCount}</text>
             <text x="230" y="195" font-family="monospace" font-size="12" fill="${theme.secondary}">Stars : ${stars}</text>
             <text x="250" y="50" font-family="sans-serif" font-size="24" font-weight="bold" fill="${theme.main}">Rank</text>
-            <text x="310" y="75" font-family="sans-serif" font-size="24" font-weight="bold"  fill="white">${rank}-tier</text>
+            <text x="310" y="75" font-family="sans-serif" font-size="24" font-weight="bold"  fill="${rankColor}">${rank}-tier</text>
         </svg>
     `)
     return svg
