@@ -1,3 +1,8 @@
+# important
+since this is hosted on a free server, the website doesn't always stay LIVE, incase it is asleep(images not displaying), [click this](https://readmestats.onrender.com/badge?label=Server&info=ON) to RUN it. then refresh the page. thnx.
+
+---
+
 Notes: 
 1-Due to GitHub's policy the user profile image in the card won't display on github readme
 2-I made this simple lame api cause I was bored
