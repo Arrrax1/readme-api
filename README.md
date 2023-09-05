@@ -1,5 +1,7 @@
 # important
-since this is hosted on a free server, the website doesn't always stay LIVE, incase it is asleep(images not displaying), [click this](https://readmestats.onrender.com/badge?label=Server&info=ON) to RUN it. then refresh the page. thnx.
+#### Since this is hosted on a free server, the website doesn't always stay LIVE.
+#### incase it is asleep(images not displaying), [click this](https://readmestats.onrender.com/badge?label=Server&info=ON) to RUN it.
+#### then refresh the page, thnx.
 
 ---
 
